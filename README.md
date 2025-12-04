@@ -1,36 +1,163 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 訪問看護 LP一体型FAQセクション
 
-## Getting Started
+> 年商5億円・5店舗経営の実績を武器に、訪問看護起業塾（80万円）と経営研究協会（月額1万円）へのCV最大化を目指すLP用FAQコンポーネント
 
-First, run the development server:
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
+
+---
+
+## 🚀 3分セットアップ
 
 ```bash
+# 1. 依存関係インストール
+npm install
+
+# 2. 開発サーバー起動
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# 3. ブラウザで確認
+# http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 プロジェクト構造
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                    # ページ
+├── components/
+│   ├── features/           # 機能コンポーネント
+│   │   ├── hero/           # ヒーローセクション
+│   │   ├── faq/            # FAQセクション
+│   │   └── cta/            # CTAボタン群
+│   ├── layouts/            # フッター等
+│   └── ui/                 # プリミティブUI
+├── config/                 # 設定・文言
+│   ├── site.ts             # URL・著作権
+│   └── content.ts          # LP文言
+├── hooks/                  # カスタムフック
+└── lib/                    # ユーティリティ
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ✏️ 文言・URLの変更
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 予約URLを変更する
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```typescript
+// src/config/site.ts
+export const SITE_CONFIG = {
+  links: {
+    consultation: "https://your-booking-url.com", // ← ここを変更
+  },
+};
+```
 
-## Deploy on Vercel
+### LP文言を変更する
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```typescript
+// src/config/content.ts
+export const CONTENT = {
+  hero: {
+    title: {
+      line1: "訪問看護で",
+      highlight: "成功する",      // ← ハイライトテキスト
+      line2: "すべての答えがここに",
+    },
+  },
+  cta: {
+    button: "無料相談を予約する",  // ← CTAボタン文言
+  },
+  // ...
+};
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### FAQ内容を変更する
+
+```typescript
+// src/components/features/faq/faq-data.ts
+export const faqData = {
+  school: [
+    {
+      question: "質問文",
+      answer: `【結論】回答文
+
+【根拠】理由や根拠
+
+【補足】追加情報`,
+    },
+  ],
+  association: [
+    // 協会向けFAQ
+  ],
+};
+```
+
+---
+
+## 🎨 デザインシステム
+
+### カラーパレット
+
+| 名前 | HEX | 用途 |
+|------|-----|------|
+| Navy | `#0f172a` | 信頼・メインテキスト |
+| Gold | `#d4af37` | 成功・CTA・アクセント |
+| White | `#ffffff` | 背景・清潔感 |
+
+### アニメーション
+
+| クラス | 効果 |
+|--------|------|
+| `shimmer-effect` | ホバー時に光沢が走る |
+| `cta-shake` | 5秒ごとにプルプル揺れる |
+
+---
+
+## 📚 ドキュメント
+
+| ファイル | 内容 |
+|---------|------|
+| `PROJECT_BLUEPRINT.md` | ビジネス文脈・設計思想 |
+| `TECH_SPEC.md` | 技術仕様・アーキテクチャ |
+
+---
+
+## 🛠️ 開発コマンド
+
+```bash
+npm run dev      # 開発サーバー起動
+npm run build    # 本番ビルド
+npm run start    # 本番サーバー起動
+npm run lint     # ESLintチェック
+```
+
+---
+
+## 📱 レスポンシブ対応
+
+| デバイス | 専用機能 |
+|---------|---------|
+| モバイル | スティッキーCTAバー（画面下部） |
+| デスクトップ | フローティングCTAボタン（右下） |
+
+---
+
+## 🔧 技術スタック
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Animation**: Framer Motion
+- **Icons**: Lucide React
+- **UI Base**: shadcn/ui
+
+---
+
+## 📄 ライセンス
+
+© 2025 じょん. All rights reserved.
