@@ -11,7 +11,7 @@ export const CONTENT = {
       highlight: "成功する",
       line2: "すべての答えがここに",
     },
-    subtitle: "SNSフォロワー11万人、業界最大級のインフルエンサーが\nあなたの不安をすべて解消します。",
+    subtitle: "5店舗・年商5億円・スタッフ50名の現役経営者が\nあなたの不安をすべて解消します。",
     cta: {
       primary: "よくある質問を見る",
       secondary: "無料相談を予約する",
