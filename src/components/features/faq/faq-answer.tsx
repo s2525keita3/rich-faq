@@ -25,7 +25,7 @@ export function FAQAnswer({ answer }: FAQAnswerProps) {
     <div className="space-y-3">
       {paragraphs.map((paragraph, idx) => {
         // 【結論】【根拠】などのヘッダーをチェック
-        const headerMatch = paragraph.match(/^【(.+?)】(.*)$/s);
+        const headerMatch = paragraph.match(/^【(.+?)】([\s\S]*)$/);
 
         if (headerMatch) {
           const [, header, content] = headerMatch;
